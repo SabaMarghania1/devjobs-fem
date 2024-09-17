@@ -2,3 +2,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --main-bg: #f4f6f8;
+  --secondary-bg: #fff;
+}
+
+[data-theme="dark"] {
+  --main-bg: #121721;
+  --secondary-bg: #19202d;
+}

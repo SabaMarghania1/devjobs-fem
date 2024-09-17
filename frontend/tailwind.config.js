@@ -9,6 +9,10 @@ export default {
       backgroundImage: {
         bgsm: "url('/mobile/bg-pattern-header.svg')",
       },
+      colors: {
+        "main-bg": "var(--main-bg)",
+        "secondary-bg": "var(--secondary-bg)",
+      },
     },
   },
   plugins: [],

@@ -3,7 +3,7 @@ import ToggleSwitch from "./ToggleSwitch";
 
 const AppLayout = () => {
   return (
-    <div>
+    <div className="flex flex-col min-h-screen bg-main-bg">
       <header className="h-[136px]">
         <div className="px-6 h-full bg-bgsm bg-cover bg-center pt-8 flex items-start justify-between">
           <Link to="/">

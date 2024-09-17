@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 import { SunIcon, MoonIcon } from "@heroicons/react/24/solid";
+import { toggleDarkMode } from "../store/themeSlice";
 
 const DarkModeToggle = () => {
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    const savedMode = localStorage.getItem("darkMode");
-    return savedMode === "true";
-  });
+  const dispatch = useDispatch();
+  const isDarkMode = useSelector((state) => state.theme.isDarkMode);
 
   useEffect(() => {
     const htmlElement = document.documentElement;
@@ -14,8 +14,6 @@ const DarkModeToggle = () => {
     } else {
       htmlElement.setAttribute("data-theme", "light");
     }
-
-    localStorage.setItem("darkMode", isDarkMode.toString());
   }, [isDarkMode]);
 
   return (
@@ -25,8 +23,8 @@ const DarkModeToggle = () => {
 
       {/* Toggle Switch */}
       <div
-        className={`relative inline-flex h-6 w-12 cursor-pointer rounded-full transition-colors duration-300 ease-in-out bg-white`}
-        onClick={() => setIsDarkMode(!isDarkMode)}
+        className="relative inline-flex h-6 w-12 cursor-pointer rounded-full transition-colors duration-300 ease-in-out bg-white"
+        onClick={() => dispatch(toggleDarkMode())}
       >
         <span
           className={`absolute left-0 top-1/2 translate-y-[-50%] h-4 w-4 transform rounded-full transition-transform duration-300 bg-[#5964E0] ease-in-out ${
