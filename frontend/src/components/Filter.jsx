@@ -6,7 +6,7 @@ const Filter = ({ toggleModal }) => {
   const isDarkMode = useSelector(getTheme);
 
   return (
-    <div className="relative w-full mb-[57px]">
+    <div className="relative  mb-[57px] w-full">
       {/* Mobile input field - visible on mobile only */}
       <div className="block md:hidden w-full">
         <input
@@ -29,7 +29,7 @@ const Filter = ({ toggleModal }) => {
       {/* Desktop layout - visible on md and larger */}
       <div className="hidden md:flex items-center md:w-full">
         {/* First input for title on larger screens */}
-        <div className="relative w-full md:w-1/3">
+        <div className="relative w-full">
           <input
             type="text"
             className="w-full pl-16 pr-4 py-7 bg-secondary-bg  md:border-r-[1px]  md:border-[#6E8098] rounded-[6px] md:rounded-l-[6px] md:rounded-r-none"
@@ -42,7 +42,7 @@ const Filter = ({ toggleModal }) => {
         </div>
 
         {/* Second input for location on larger screens */}
-        <div className="relative w-full md:w-1/3">
+        <div className="relative lg:w-full ">
           <input
             type="text"
             className="w-full pl-16 pr-4 py-7 bg-secondary-bg  md:border-r-[1px] md:border-[#6E8098] border-r-opacity-[20%]"
@@ -57,13 +57,13 @@ const Filter = ({ toggleModal }) => {
 
         {/* Checkbox and Search Button for larger screens */}
         <div
-          className={`flex items-center ${
+          className={`flex items-center lg:justify-center w-1/3 lg:w-2/3  ${
             isDarkMode ? "bg-secondary-bg" : "bg-white"
-          } gap-4 px-4`}
+          } gap-2 lg:gap-6 px-4 md:justify-center rounded-r-[6px]`}
           style={{ height: "80px" }}
         >
           {/* Checkbox for "Full Time" */}
-          <div className="flex items-center justify-center gap-2">
+          <div className="flex items-center justify-center gap-2 lg:gap-4">
             <input type="checkbox" id="fullTime" className="h-6 w-6" />
             <label
               htmlFor="fullTime"
@@ -75,7 +75,7 @@ const Filter = ({ toggleModal }) => {
 
           {/* Search Button */}
           <button
-            className="bg-[#5964E0] text-white px-[14px] py-4 rounded-[6px] md:rounded-r-[6px]"
+            className="bg-[#5964E0]  text-white px-[14px] py-4 lg:px-9 lg:py-4 rounded-[6px] md:rounded-r-[6px]"
             onClick={toggleModal}
           >
             Search

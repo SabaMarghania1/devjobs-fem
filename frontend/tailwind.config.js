@@ -9,6 +9,7 @@ export default {
       backgroundImage: {
         bgsm: "url('/mobile/bg-pattern-header.svg')",
         bgmd: "url('/tablet/bg-pattern-header.svg')",
+        bglg: "url('/desktop/bg-pattern-header.svg')",
       },
       screens: {
         md: "768px",
