@@ -13,7 +13,7 @@ const AppLayout = () => {
           <ToggleSwitch />
         </div>
       </header>
-      <main className="px-6 md:px-10">
+      <main className="px-6 md:px-10 w-full">
         <Outlet />
       </main>
     </div>

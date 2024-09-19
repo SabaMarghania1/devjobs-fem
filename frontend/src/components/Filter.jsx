@@ -6,12 +6,12 @@ const Filter = ({ toggleModal }) => {
   const isDarkMode = useSelector(getTheme);
 
   return (
-    <div className="relative">
+    <div className="relative w-full mb-[57px]">
       {/* Mobile input field - visible on mobile only */}
-      <div className="block md:hidden">
+      <div className="block md:hidden w-full">
         <input
           type="text"
-          className="w-full pl-16 pr-4 py-7 bg-secondary-bg border border-gray-200 rounded-[6px]"
+          className="w-full pl-4 pr-4 py-7 bg-secondary-bg  rounded-[6px]"
           placeholder="Filter by ..."
         />
         <FaFilter
@@ -27,12 +27,12 @@ const Filter = ({ toggleModal }) => {
       </div>
 
       {/* Desktop layout - visible on md and larger */}
-      <div className="hidden md:flex items-center">
+      <div className="hidden md:flex items-center md:w-full">
         {/* First input for title on larger screens */}
         <div className="relative w-full md:w-1/3">
           <input
             type="text"
-            className="w-full pl-16 pr-4 py-7 bg-secondary-bg border border-gray-200 md:border-r-[1px] md:border-gray-300 rounded-[6px] md:rounded-l-[6px] md:rounded-r-none"
+            className="w-full pl-16 pr-4 py-7 bg-secondary-bg  md:border-r-[1px]  md:border-[#6E8098] rounded-[6px] md:rounded-l-[6px] md:rounded-r-none"
             placeholder="Filter by title..."
           />
           <img
@@ -45,7 +45,7 @@ const Filter = ({ toggleModal }) => {
         <div className="relative w-full md:w-1/3">
           <input
             type="text"
-            className="w-full pl-16 pr-4 py-7 bg-secondary-bg border border-gray-200 md:border-r-[1px] md:border-gray-300"
+            className="w-full pl-16 pr-4 py-7 bg-secondary-bg  md:border-r-[1px] md:border-[#6E8098] border-r-opacity-[20%]"
             placeholder="Filter by location..."
           />
           <img
@@ -57,8 +57,10 @@ const Filter = ({ toggleModal }) => {
 
         {/* Checkbox and Search Button for larger screens */}
         <div
-          className="flex items-center bg-white gap-4 px-4"
-          style={{ height: "82px" }}
+          className={`flex items-center ${
+            isDarkMode ? "bg-secondary-bg" : "bg-white"
+          } gap-4 px-4`}
+          style={{ height: "80px" }}
         >
           {/* Checkbox for "Full Time" */}
           <div className="flex items-center justify-center gap-2">
@@ -73,7 +75,7 @@ const Filter = ({ toggleModal }) => {
 
           {/* Search Button */}
           <button
-            className="bg-[#5964E0] text-white px-6 py-2 rounded-[6px] md:rounded-r-[6px]"
+            className="bg-[#5964E0] text-white px-[14px] py-4 rounded-[6px] md:rounded-r-[6px]"
             onClick={toggleModal}
           >
             Search
