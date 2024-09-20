@@ -11,7 +11,7 @@ const JobDetails = () => {
 
   return (
     <div className="w-full -mt-4 ">
-      <section className="bg-secondary-bg relative pt-[49px] pb-[32px] rounded-[6px] flex flex-col justify-center items-center mb-6">
+      <section className="bg-secondary-bg relative pt-[49px]  pb-[32px] rounded-[6px] flex flex-col justify-center items-center mb-6">
         <div
           className="w-[50px] h-[50px] absolute -top-6 left-1/2 -translate-x-1/2 flex items-center justify-center rounded-lg"
           style={{ backgroundColor: job.logoBackground }}
@@ -132,8 +132,23 @@ const JobDetails = () => {
         </div>
       </section>
 
-      <footer className="bg-secondary-bg w-full absolute left-0  px-6 py-6">
-        <button className="bg-[#5964E0] text-white font-bold rounded-[5px] w-full py-[14px]">
+      <footer className="bg-secondary-bg w-full absolute left-0  px-6 py-6 md:px-8  md:flex md:items-center md:justify-between">
+        <button className="bg-[#5964E0] text-white font-bold rounded-[5px] w-full py-[14px] md:hidden">
+          Apply Now
+        </button>
+
+        <div className="flex flex-col gap-3">
+          <p
+            className={`font-bold text-xl ${
+              isDarkMode ? "text-[#fff]" : "text-[#19202d]"
+            }`}
+          >
+            {job.position}
+          </p>
+          <span className="text-[#6E8098]">{job.company}</span>
+        </div>
+
+        <button className="bg-[#5964E0] text-white font-bold rounded-[5px]  py-[14px] px-7 hidden md:block">
           Apply Now
         </button>
       </footer>
