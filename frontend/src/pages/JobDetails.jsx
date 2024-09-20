@@ -10,23 +10,33 @@ const JobDetails = () => {
   const isDarkMode = useSelector(getTheme);
 
   return (
-    <div className="w-full -mt-4 ">
-      <section className="bg-secondary-bg relative pt-[49px]  pb-[32px] rounded-[6px] flex flex-col justify-center items-center mb-6">
+    <div className="w-full -mt-4  md:max-w-[730px] md:m-auto md:-mt-12">
+      <section className="bg-secondary-bg relative pt-[49px]  pb-[32px] rounded-[6px] flex flex-col md:flex-row md:pt-0 md:pb-0 justify-center items-center mb-6 md:justify-between md:pr-10">
         <div
-          className="w-[50px] h-[50px] absolute -top-6 left-1/2 -translate-x-1/2 flex items-center justify-center rounded-lg"
+          className="w-[50px] h-[50px] absolute  -top-6 left-1/2 -translate-x-1/2 flex items-center justify-center rounded-lg md:hidden"
           style={{ backgroundColor: job.logoBackground }}
         >
           <img src={job.logo} alt="" />
         </div>
+        <div className="flex items-center gap-8">
+          <div
+            className="hidden w-[140px] h-[140px] md:flex items-center justify-center rounded-lg"
+            style={{ backgroundColor: job.logoBackground }}
+          >
+            <img src={job.logo} alt="" />
+          </div>
 
-        <h3
-          className={`text-xl font-bold ${
-            isDarkMode ? "text-[#fff]" : "text-[#19202D]"
-          }`}
-        >
-          {job.company}
-        </h3>
-        <p className="text-[#6E8098] mb-[27px]">{job.company}.com</p>
+          <div>
+            <h3
+              className={`text-xl md:text-[24px] md:mb-2 font-bold ${
+                isDarkMode ? "text-[#fff]" : "text-[#19202D]"
+              }`}
+            >
+              {job.company}
+            </h3>
+            <p className="text-[#6E8098] mb-[27px]">{job.company}.com</p>
+          </div>
+        </div>
 
         <a
           href={job.website}
@@ -36,16 +46,16 @@ const JobDetails = () => {
         </a>
       </section>
 
-      <section className="px-6 py-10 bg-secondary-bg rounded-[6px] mb-16">
-        <div className="flex flex-col gap-12 mb-12">
+      <section className="px-6 py-10 bg-secondary-bg rounded-[6px] mb-16 md:px-11">
+        <div className="flex flex-col gap-12 mb-12 md:flex-row justify-between items-center">
           <div>
-            <div className="text-[#6E8098] flex items-center gap-3 mb-">
+            <div className="text-[#6E8098] flex items-center gap-3 mb-2">
               <span>{job.postedAt}</span>
               <div className="w-1 h-1 bg-[#6E8098] rounded-full"></div>
               <span>{job.contract}</span>
             </div>
             <h2
-              className={`text-xl font-bold mb-1 ${
+              className={`text-xl font-bold mb-1 md:text-[28px] ${
                 isDarkMode ? "text-[#fff]" : "text-[#19202D]"
               }`}
             >
@@ -55,7 +65,7 @@ const JobDetails = () => {
               {job.location}
             </p>
           </div>
-          <button className="bg-[#5964E0] text-white font-bold rounded-[5px] w-full py-[14px]">
+          <button className="bg-[#5964E0] text-white font-bold rounded-[5px] w-full md:w-[141px] py-[14px]">
             Apply Now
           </button>
         </div>
@@ -117,7 +127,7 @@ const JobDetails = () => {
               {job.role.items.map((item, index) => {
                 return (
                   <li
-                    className={`flex justify-between gap-4 ${
+                    className={`flex justify-between md:justify-start md:gap-7 gap-4 ${
                       isDarkMode ? "text-[#9DAEC2]" : "text-[#6E8098]"
                     }`}
                     key={item}

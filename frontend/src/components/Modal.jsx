@@ -1,8 +1,31 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { getTheme } from "../store/themeSlice";
+import {
+  setFilterByLocation,
+  setFullTime,
+  setIsSearching,
+} from "../store/filterSlice";
 
 const Modal = ({ toggleModal }) => {
   const isDarkMode = useSelector(getTheme);
+  const { location, fullTime } = useSelector((state) => state.filter); // Getting location and fullTime from Redux
+  const dispatch = useDispatch();
+
+  // Handler for location input change
+  const handleLocationChange = (e) => {
+    dispatch(setFilterByLocation(e.target.value)); // Update location in Redux
+  };
+
+  // Handler for full-time checkbox change
+  const handleFullTimeChange = (e) => {
+    dispatch(setFullTime(e.target.checked)); // Update fullTime in Redux
+  };
+
+  // Handle search button click
+  const handleSearch = () => {
+    dispatch(setIsSearching(true)); // Set searching state to true
+    toggleModal(); // Close the modal
+  };
 
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50 md:hidden">
@@ -25,6 +48,8 @@ const Modal = ({ toggleModal }) => {
             type="text"
             className="px-6 py-2 w-full bg-transparent outline-none"
             placeholder="Filter by location..."
+            value={location} // Controlled input from Redux
+            onChange={handleLocationChange} // Dispatch to Redux on change
           />
         </div>
 
@@ -34,8 +59,9 @@ const Modal = ({ toggleModal }) => {
             type="checkbox"
             id="fullTime"
             className="h-4 w-4 text-blue-600"
+            checked={fullTime} // Controlled checkbox from Redux
+            onChange={handleFullTimeChange} // Dispatch to Redux on change
           />
-          {/* Correct label color handling */}
           <label
             htmlFor="fullTime"
             className={isDarkMode ? "text-white" : "text-gray-900"}
@@ -44,9 +70,10 @@ const Modal = ({ toggleModal }) => {
           </label>
         </div>
 
+        {/* Search button */}
         <button
           className="bg-[#5964E0] text-white px-6 py-2 rounded mt-6 w-full"
-          onClick={toggleModal}
+          onClick={handleSearch} // Trigger search and close modal
         >
           Search
         </button>
